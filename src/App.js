@@ -7,14 +7,17 @@ import Navigation from './components/Navigation';
 import Products from './components/Products';
 import ShoppingCart from './components/ShoppingCart';
 
+// 2 state properties - product + cart
 function App() {
 	const [products] = useState(data);
 	const [cart, setCart] = useState([]);
 
 	const addItem = item => {
 		// add the given item to the cart
+		console.log('item', item)
+		setCart(cart => [ ...cart, item ])
 	};
-
+	
 	return (
 		<div className="App">
 			<Navigation cart={cart} />
@@ -30,7 +33,6 @@ function App() {
 					/>
 				)}
 			/>
-
 			<Route
 				path="/cart"
 				render={() => <ShoppingCart cart={cart} />}
