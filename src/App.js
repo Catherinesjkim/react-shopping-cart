@@ -11,6 +11,10 @@ import ShoppingCart from './components/ShoppingCart';
 // Import ProductContext into App.js
 import ProductContext from './contexts/ProductContext';
 
+// SETP 6 - Providing data with CartContext
+// Import CartConext into App.js
+import CartContext from './contexts/CartContext';
+
 // Two state properties - product + cart
 function App() {
 	const [products] = useState(data);
@@ -29,16 +33,14 @@ function App() {
 	// Now that I'm providing my products state and addItem function we can refactor our products route to no longer use render props.
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
-			<div className="App">
-				<Navigation cart={cart} />
-
-				{/* Routes */}
-				<Route exact path="/" component={Products} />
-				<Route
-					path="/cart"
-					render={() => <ShoppingCart cart={cart} />}
-				/>
-			</div>
+			<CartContext.Provider value={{ cart }}>
+				<div className="App">
+					<Navigation />
+					{/* Routes */}
+					<Route exact path="/" component={Products} />
+					<Route path="/cart" component={ShoppingCart} />
+				</div>
+			</CartContext.Provider>
 		</ProductContext.Provider>
 	);
 }
