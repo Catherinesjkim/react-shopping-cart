@@ -10,8 +10,6 @@ import ShoppingCart from './components/ShoppingCart';
 // STEP 3 - Providing data with ProductContext
 // Import ProductContext into App.js
 import ProductContext from './contexts/ProductContext';
-import Product from './components/Product';
-
 
 // Two state properties - product + cart
 function App() {
