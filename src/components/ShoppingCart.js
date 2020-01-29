@@ -1,18 +1,26 @@
-import React from 'react';
+// useContext Hook
+import React, { useContext } from 'react';
 
 // Components
 import Item from './ShoppingCartItem';
 
-const ShoppingCart = props => {
-	const getCartTotal = () => {
-		return props.cart.reduce((acc, value) => {
-			return acc + value.price;
-		}, 0).toFixed(2);
-	};
+// Contexts
+import CartContext from '../contexts/CartContext';
+
+// In the component, pass CartContext to the useContext hook and assign it to a variable named cart
+const ShoppingCart = () => {
+	const { cart } = useContext(CartContext);
+	console.log(cart);
+		
+		const getCartTotal = () => {
+			return cart.reduce((acc, value) => {
+				return acc + value.price;
+			}, 0).toFixed(2);
+		};
 
 	return (
 		<div className="shopping-cart">
-			{props.cart.map(item => (
+			{cart.map(item => (
 				<Item key={item.id} {...item} />
 			))}
 
