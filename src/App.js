@@ -24,8 +24,11 @@ function App() {
 	const addItem = item => {
 		// add the given item to the cart
 		console.log('item', item)
-		setCart(cart => [ ...cart, item ])
+		setCart([ ...cart, item ])
 	};
+	const removeItem = removeThis => {
+		setCart(cart => cart.filter(item => item.id !== removeThis))
+	}
 	
 	// Step 3 - Wrap all of your components/routes in App.js inside of ProductContext.Provider component
 	// Next pass a value prop to your Provider
@@ -33,7 +36,7 @@ function App() {
 	// Now that I'm providing my products state and addItem function we can refactor our products route to no longer use render props.
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
-			<CartContext.Provider value={{ cart }}>
+			<CartContext.Provider value={{ cart, setCart, removeItem }}>
 				<div className="App">
 					<Navigation />
 					{/* Routes */}

@@ -1,3 +1,9 @@
+// Step 7 - Went to Navigation component and imported the useContext hook and CartContext
+// Now in the component, passed CartContext to the useContext hook and assigned it to a variable named cart
+// Removed all instances of props inside of my component
+// Removed the props param
+// Removed the props 
+
 // useContext Hook
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
